@@ -8,6 +8,9 @@ void setup() {
 int nowX = 250;
 int bulletX = 1000;
 int bulletY = 1000;
+int enemyX = 100;
+int enemyY = 100;
+int enemy_color = 0;
 void draw() {
   background(255);
   fill(#FA8D08);
@@ -28,7 +31,7 @@ void draw() {
     }
     if (keyPressed) {
       if (key == ' ') {
-        bulletX = nowX;
+        bulletX = nowX + 22;
         bulletY = 450;
         }
       }
@@ -36,5 +39,13 @@ void draw() {
     
     
     fill(#050505);
-    ellipse(bulletX + 22, bulletY, 7, 7);
+    ellipse(bulletX, bulletY, 7, 7);
+    
+    
+    if (enemyX <= bulletX && bulletX <= enemyX + 80 && enemyY >= bulletY) {
+      enemy_color = 255;
+    }
+    fill(enemy_color);
+    rect(enemyX, enemyY, 80, 80);
+   
 }
